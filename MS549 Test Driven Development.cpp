@@ -65,18 +65,34 @@ public:
 int main() 
 {
     clock_t start, end;
+    int size = 1000000;
+ 
+    Stack stack(size);
     start = clock();
-    Stack stack(5);
-    // Test the push method
-    stack.push(1);
-    stack.push(10);
-    stack.push(45);
-    stack.push(80);
-    // Test the peek method
-    std::cout << "Top element is: " << stack.peek() << std::endl;
-    // Test the pop method
-    std::cout << "Popped element is: " << stack.pop() << std::endl;
+    for (int i=0; i < size;i++)
+    {
+        stack.push(i);
+    }
     end = clock();
-    std::cout << (end - start) / 1000;
+    std::cout << "Push time: " << (end - start) << std::endl;
+    start = clock();
+    for (int i=0; i < size; i++)
+    {
+        stack.pop();
+    }
+    end = clock();
+    std::cout << "Pop time: " << (end - start) << std::endl;
     return 0;
+    // Test the push method
+    //stack.push(1);
+    //stack.push(10);
+    //stack.push(45);
+    //stack.push(80);
+    // Test the peek method
+    // std::cout << "Top element is: " << stack.peek() << std::endl;
+    // Test the pop method
+    // std::cout << "Popped element is: " << stack.pop() << std::endl;
+    // end = clock();
+    // std::cout << (end - start) / 1000;
+    // return 0;
 }
