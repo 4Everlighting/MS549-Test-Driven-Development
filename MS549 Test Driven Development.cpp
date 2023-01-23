@@ -65,23 +65,26 @@ public:
 int main() 
 {
     clock_t start, end;
-    int size = 1000000;
- 
-    Stack stack(size);
-    start = clock();
-    for (int i=0; i < size;i++)
+    int length[] = {100000,1000000,10000000};
+    for (auto size : length)
     {
-        stack.push(i);
+        std::cout << "Length: " << size << std::endl;
+        Stack stack(size);
+        start = clock();
+        for (int i = 0; i < size;i++)
+        {
+            stack.push(i);
+        }
+        end = clock();
+        std::cout << "Push time: " << (end - start) << std::endl;
+        start = clock();
+        for (int i = 0; i < size; i++)
+        {
+            stack.pop();
+        }
+        end = clock();
+        std::cout << "Pop time: " << (end - start) << std::endl;
     }
-    end = clock();
-    std::cout << "Push time: " << (end - start) << std::endl;
-    start = clock();
-    for (int i=0; i < size; i++)
-    {
-        stack.pop();
-    }
-    end = clock();
-    std::cout << "Pop time: " << (end - start) << std::endl;
     return 0;
     // Test the push method
     //stack.push(1);
